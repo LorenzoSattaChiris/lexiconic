@@ -926,7 +926,6 @@ function startAutoSave() {
         }
     }, autoSaveInterval * 1000);
 
-    notyf.success(`Auto-save with interval: ${autoSaveInterval} sec`);
 }
 
 /**
