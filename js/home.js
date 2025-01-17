@@ -559,7 +559,7 @@ function displaySuggestions(displayData, range = null, parentRequestId = null) {
                     triggerDictionaryRevision(suggestionText);
                 } else if (displayData.type === "ai") {
                     // Disabled for now due to limit (No Context Would be Shared in the Current Implementation Rendering the Features Useless)
-                    notyf.success("Working on it! 🛠️. Coming Soon");
+                    notyf.success("Feature Coming Soon");
 
                     // Previously...
                     // Partial text AI suggestion
