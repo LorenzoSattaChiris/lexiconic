@@ -1,0 +1,62 @@
+/* brand.css - General Branding */
+
+/* Global Colors */
+:root {
+    --primary-color: #205cef ; /* Dark blue */
+    --accent-color: #F39C12; /* Bright orange */
+    --background-color: #FFFFFF; /* White */
+    --text-color: #2C3E50; /* Dark grey */
+    --error-color: #E74C3C; /* Red for errors */
+    --warning-color: #F1C40F; /* Yellow for warnings */
+    --success-color: #27AE60; /* Green for success */
+}
+
+/* Global Fonts */
+@import url('/fonts.css');
+
+body {
+    font-family: 'Nunito', 'Open Sans', 'Merriweather', sans-serif; /* Clean, modern fonts */
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+/* Fallbacks for Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Merriweather', 'Open Sans', sans-serif; /* Classic and legible */
+    color: var(--primary-color);
+}
+
+/* Fallbacks for Paragraphs */
+p, li, blockquote {
+    font-family: 'Nunito', 'Open Sans', sans-serif; /* Simple and easy to read */
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* Links */
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Buttons */
+button {
+    font-family: 'Nunito', sans-serif;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--primary-color);
+}

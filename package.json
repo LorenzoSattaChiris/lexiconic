@@ -1,0 +1,39 @@
+{
+  "name": "Lexiconic",
+  "version": "1.0.4",
+  "description": "A web application enabling users to refine documents with the power of AI assistance.",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "serve": "concurrently \"nodemon app.js\" \"browser-sync start --config bs-config.js\"",
+    "s": "npm run serve"
+  },
+  "author": "Lorenzo Satta Chiris",
+  "license": "Proprietary",
+  "dependencies": {
+    "autolinker": "^4.1.0",
+    "axios": "^1.7.9",
+    "compression": "^1.7.5",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "express-subdomain": "^1.0.6",
+    "helmet": "^8.0.0",
+    "isomorphic-dompurify": "^2.20.0",
+    "mammoth": "^1.9.0",
+    "marked": "^15.0.6",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "pdf-parse": "^1.1.1",
+    "turndown": "^7.2.0",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "browser-sync": "^3.0.3",
+    "concurrently": "^9.1.0",
+    "markdown-toc": "^1.2.0",
+    "nodemon": "^3.1.7"
+  }
+}

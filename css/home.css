@@ -1,0 +1,909 @@
+/* =====================================================================
+   Lexiconic - Home Page Styles
+   ===================================================================== */
+
+/* ===========================
+   Part 1: Welcome Modal
+   =========================== */
+
+/* -- Container for the Welcome Modal -- */
+.welcome-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 800px;
+  z-index: 9999;
+  perspective: 1500px;
+}
+
+/* -- Inner Content of the Modal -- */
+.welcome-modal-content {
+  animation: fadeInModal 0.6s ease;
+}
+
+/* -- Upper (Left) side of the modal (Text & File Upload) -- */
+.welcome-modal-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* -- Text Section -- */
+.welcome-modal-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* -- Main Title -- */
+.welcome-modal-title {
+  font-family: "Nunito", sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 10px;
+}
+
+/* -- Highlight within the title -- */
+.welcome-modal-title .highlight {
+  color: var(--primary-color);
+  position: relative;
+  cursor: pointer;
+}
+
+/* -- Tagline below the title -- */
+.welcome-modal-tagline {
+  font-family: "Nunito", sans-serif;
+  font-size: 1.2rem;
+  color: var(--text-color);
+  margin-bottom: 20px;
+  transition:
+    color 0.3s ease,
+    letter-spacing 0.3s ease;
+}
+.welcome-modal-tagline:hover {
+  color: var(--primary-color);
+  letter-spacing: 0.5px;
+}
+
+/* -- Tooltip for the highlight word -- */
+.highlight:hover::after {
+  content: "Pertaining to the lexicon or vocabulary. Alternatively, iconic vocabulary that speaks volumes - at least for us";
+  position: absolute;
+  bottom: -1.5rem;
+  left: 0;
+  background: #000;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+/* -- Lower (Right) side of the modal (Orange background) -- */
+.welcome-modal-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background: var(--accent-color);
+  border-radius: 10px;
+  transform-origin: left center;
+}
+
+.welcome-modal-right img {
+  max-width: 30%;
+  height: auto;
+  padding: 5px;
+}
+
+/* -- Upload Button & File Info -- */
+.upload-btn {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  font-family: "Nunito", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease;
+}
+.upload-btn:hover {
+  transform: scale(1.05);
+}
+
+/* -- Supported file info under the upload button -- */
+.file-support {
+  font-family: "Nunito", sans-serif;
+  font-size: 0.9rem;
+  color: grey;
+  font-style: italic;
+  margin-top: 10px;
+}
+
+/* -- Sample Content Button -- */
+#sampleButton {
+  background-color: #333;
+  color: #fff;
+  font-family: "Nunito", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease;
+}
+#sampleButton:hover {
+  transform: scale(1.05);
+}
+
+/* -- Tutorial Link under Sample Button -- */
+.tutorial {
+  text-align: center;
+  margin-top: 5px;
+}
+
+/* -- Dot animation on 'iconic' text's dot -- */
+.iconic .dot {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  top: 8px;
+  left: 52px;
+  transform-origin: center;
+  animation: bounce 2s ease-in-out infinite;
+  z-index: 2;
+}
+.iconic::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 52px;
+  width: 5px;
+  height: 7px;
+  background-color: white;
+  z-index: 1;
+}
+
+/* -- Close Modal Animation (Fade Out) -- */
+.close-animation {
+  animation: fadeOut 0.8s ease forwards;
+  pointer-events: none;
+}
+
+/* ===========================
+     Part 2: Editor
+     =========================== */
+
+/* -- Quill Editor Container -- */
+#editor {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border: 1px solid #ccc;
+  border-radius: 0;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  padding-right: 20px;
+}
+
+/* -- Separator in Quill Toolbar -- */
+.ql-toolbar-separator {
+  border-left: 1px solid #ccc;
+  margin: 0;
+  margin-left: -10px;
+  height: 10px;
+  display: inline-block;
+}
+
+/* -- 'More' Toolbar -- */
+.more-toolbar {
+  background-color: #444444;
+  border-radius: 8px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+.more-toolbar .hidden-buttons {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 0px;
+  left: 2px;
+  background-color: #444444;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
+}
+.more-toolbar .hidden-buttons.show {
+  display: flex;
+}
+.more-toolbar:hover .hidden-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* -- Buttons inside Hidden Buttons -- */
+.hidden-buttons button,
+.hidden-buttons select {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 16px;
+  margin: 5px 0;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  transition:
+    transform 0.2s ease,
+    font-weight 0.2s ease;
+}
+.hidden-buttons button:hover,
+.hidden-buttons select:hover {
+  font-weight: bold;
+  transform: scale(1.1);
+}
+.hidden-buttons select.ql-align {
+  margin-top: 8px;
+}
+.hidden-buttons,
+.more-toolbar {
+  pointer-events: auto;
+}
+
+/* -- Spinner Animation for AI / Dictionary requests -- */
+.loading-spinner {
+  display: none;
+  align-items: center;
+}
+.spinner-icon {
+  display: inline-block;
+  animation: spin 1s linear infinite;
+  margin-right: 5px;
+}
+
+/* -- Download Button at bottom-left -- */
+#download-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+}
+#download-btn:hover {
+  background-color: #007bff;
+  scale: 1.05;
+}
+
+/* -- New Page Button next to Download -- */
+#new-page-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 90px;
+  background: none;
+  border: none;
+  padding: 0;
+}
+#new-page-btn img {
+  height: 30px;
+}
+#new-page-btn:hover {
+  background: none;
+  transform: none;
+}
+
+/* ===========================
+     Part 3: AI Suggestions
+     =========================== */
+
+/* -- AI Suggestions Container in Sidebar -- */
+#ai-suggestions-container {
+  margin: 10px 0;
+  display: block;
+}
+#generateAI {
+  font-size: 12px;
+}
+#generateAIDescription {
+  font-size: 12px;
+}
+
+/* -- Individual suggestion blocks -- */
+.suggestions-block {
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  padding: 12px;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  animation: fadeInUp2 0.5s ease-out;
+  transition: box-shadow 0.3s ease;
+}
+.suggestions-block:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* -- Toggle (Show/Hide) Suggestions Button -- */
+.toggle-suggestions-btn {
+  display: inline-block;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border: none;
+  background-color: #ddd;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+/* -- Heading area inside suggestions block -- */
+.suggestions-block h3 {
+  margin: 5px 0;
+}
+
+/* -- The sub-heading that shows the original text -- */
+.suggestions-block p {
+  margin: 5px 0 10px 0;
+}
+
+/* -- The list containing AI suggestions or synonyms -- */
+.suggestions-list {
+  margin-top: 10px;
+}
+
+/* -- Each individual suggestion line -- */
+.ai-suggestion {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  box-shadow: none;
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.ai-suggestion:hover {
+  background-color: #fafafa;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+.ai-suggestion-text {
+  flex: 1;
+  margin-right: 10px;
+}
+
+/* -- Buttons area for each suggestion -- */
+.ai-suggestion-actions {
+  display: inline-flex;
+  gap: 5px;
+}
+.ai-suggestion-actions button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 5px;
+  transition: background 0.2s;
+  border-radius: 3px;
+}
+.ai-suggestion-actions button:hover {
+  background: #eee;
+}
+
+/* -- Accept/Refuse/Regenerate/Explain Icons -- */
+.ai-accept::before {
+  content: "✔ ";
+  color: green;
+}
+.ai-refuse::before {
+  content: "✖ ";
+  color: red;
+}
+.ai-regenerate::before {
+  content: "↻ ";
+  color: #666;
+}
+.ai-explain {
+  color: #444;
+  font-weight: bold;
+}
+
+/* -- Link to version control from suggestions block -- */
+.version-control-link {
+  margin-left: 10px;
+  font-size: 0.9rem;
+  text-decoration: underline;
+  color: #0066cc;
+}
+
+/* -- Button to clear suggestions -- */
+.clear-suggestions-btn {
+  display: inline-block;
+  margin-bottom: 10px;
+  border: none;
+  background-color: #f44336;
+  color: #fff;
+  padding: 3px 6px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 12px;
+  margin-top: 5px;
+}
+.clear-suggestions-btn:hover {
+  background-color: #d32f2f;
+}
+
+/* ===========================
+     Part 4: Side Modal
+     =========================== */
+
+/* -- Main Sidebar Modal Container -- */
+.side-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 400px;
+  background: #ffffff;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px 0 0 10px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  transform: translateX(100%);
+  transition: transform 0.5s ease;
+  overflow-y: auto;
+}
+.side-modal.open {
+  transform: translateX(0);
+}
+
+/* -- Tabs in the modal header -- */
+.side-modal-header {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e4e5e7;
+}
+
+/* -- Tab buttons (AI Suggestions / Update History) -- */
+.menu-btn {
+  flex: 1;
+  padding: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+.menu-btn.active {
+  background: #007bff;
+  color: #fff;
+}
+
+/* -- Tab Content Wrappers -- */
+.side-modal-content {
+  flex: 1;
+  padding: 20px;
+  display: none;
+}
+.side-modal-content.active {
+  display: block;
+}
+
+/* ===========================
+     Part 5: Version Control
+     =========================== */
+
+/* -- Version Control Container & Filter -- */
+.version-control-container {
+  margin-top: 20px;
+  padding: 10px;
+  border-top: 2px solid #ccc;
+}
+.version-control-filter {
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+  margin-bottom: 5px;
+}
+.version-control-filter:hover {
+  border-color: #888;
+}
+.version-control-filter:focus {
+  outline: none;
+  border-color: #007bff;
+}
+.version-control-filter option {
+  font-size: 14px;
+  padding: 4px 0;
+}
+
+/* -- The container for the list of versions -- */
+.version-control-container #version-control-list {
+  margin-top: 10px;
+}
+
+/* -- Where the "No updates yet" or versions are displayed -- */
+.versions-container {
+  max-height: 60vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 10px;
+}
+.no-updates {
+  color: #999;
+}
+
+/* -- Each version entry in the history list -- */
+.version-entry {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  padding: 10px;
+  position: relative;
+  box-shadow: none;
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* -- Header for each version entry -- */
+.version-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.version-info {
+  font-size: 14px;
+  color: #666;
+}
+.version-info .version-number {
+  font-weight: bold;
+  color: #333;
+}
+.key-changes {
+  font-size: 12px;
+  color: #333;
+  margin-top: 5px;
+}
+
+/* -- Preview/Revert Buttons -- */
+.preview-btn,
+.revert-btn {
+  background-color: #28a745;
+  color: #fff;
+  margin: 0 3px;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.preview-btn:hover {
+  background-color: #218838;
+}
+.revert-btn {
+  background-color: #dc3545;
+}
+.revert-btn:hover {
+  background-color: #c82333;
+}
+
+/* -- Toggle for Descendants (Nested) -- */
+.descendants-toggle {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  font-size: 13px;
+  margin-top: 5px;
+  padding: 0;
+}
+.descendants-toggle:hover {
+  text-decoration: underline;
+}
+.descendants-container {
+  margin: 10px 0 10px 10%;
+  border: 1px solid #ccc;
+  background-color: #eee;
+  padding: 10px;
+  display: none; /* hidden by default */
+}
+
+/* ===========================
+     Part 6: Preview Modal
+     =========================== */
+
+/* -- Backdrop behind the preview modal -- */
+.modal-backdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 9998;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.modal-backdrop.active {
+  display: block;
+  opacity: 1;
+}
+
+/* -- Preview Modal Window -- */
+.preview-modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  max-width: 1000px;
+  height: 75%;
+  background: #fff;
+  border-radius: 12px;
+  z-index: 9999;
+  padding: 24px;
+  overflow-y: auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transform: translate(-50%, -50%) scale(0.95);
+  opacity: 0;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+.preview-modal.active {
+  display: block;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+/* -- Header in Preview Modal -- */
+.preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.preview-header h3 {
+  font-size: 20px;
+  color: #24292e;
+}
+
+/* -- Two columns for Past vs. Current -- */
+.preview-versions {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.preview-column {
+  flex: 1;
+  min-width: 300px;
+}
+
+/* -- Non-editable content areas (old/current version) -- */
+.non-editable-content {
+  max-height: 60vh;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* -- Highlights for text differences -- */
+.highlight-added {
+  background-color: #e6ffed;
+  border-left: 3px solid #28a745;
+  padding-left: 8px;
+  color: #22863a;
+  font-weight: bold;
+}
+.highlight-removed {
+  background-color: #ffeef0;
+  border-left: 3px solid #d73a49;
+  padding-left: 8px;
+  color: #cb2431;
+  font-style: italic;
+  text-decoration: line-through;
+}
+
+/* -- Preview Modal Buttons (Close/Revert) -- */
+#closePreviewBtn {
+  background-color: #28a745;
+  color: #ffffff;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+#closePreviewBtn:hover {
+  background-color: #218838;
+}
+#previewRevertBtn {
+  background-color: #d73a49;
+  margin-top: 10px;
+  margin-left: calc(50% - 100px);
+}
+#previewRevertBtn:hover {
+  background-color: #c7283f;
+}
+
+/* ===========================
+     Part 7: Floating Button
+     =========================== */
+
+/* -- Floating button on the bottom-right to toggle side modal -- */
+.floating-btn {
+  position: fixed;
+  bottom: 20px;
+  right: -100px; /* Start off-screen */
+  width: 60px;
+  height: 60px;
+  background-color: rgba(0, 123, 255, 0.3);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1001;
+  transform: rotate(0deg);
+  transition:
+    transform 1.5s cubic-bezier(0.6, 0.04, 0.98, 0.335),
+    right 1.2s ease-out;
+}
+.floating-btn img {
+  width: 30px;
+  height: 30px;
+}
+.floating-btn:hover {
+  background-color: rgba(0, 123, 255, 0.4);
+  transform: scale(1.05);
+}
+
+/* -- Rolling in from right animation class -- */
+.roll-in {
+  animation: rollInFromRight 1.2s ease-out forwards;
+}
+
+/* ===========================
+     Part 8: Responsive
+     =========================== */
+
+@media (max-width: 768px) {
+  .side-modal {
+    width: 100%;
+    border-radius: 0;
+  }
+  .side-modal.open + #editor {
+    margin-right: 0;
+  }
+}
+
+/* ===========================
+     Part 9: Keyframe Animations
+     =========================== */
+
+/* -- Bouncing Dot -- */
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* -- Spinner rotation -- */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* -- Fade In + Scale for Welcome Modal -- */
+@keyframes fadeInModal {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* -- Fade Out for closing the Welcome Modal -- */
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* -- Fade In Up (used by .preview-modal, etc.) -- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) translateY(0);
+  }
+}
+
+/* -- Slide Up for Suggestions Block -- */
+@keyframes fadeInUp2 {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* -- Rolling In from the Right for the floating button -- */
+@keyframes rollInFromRight {
+  0% {
+    right: -100px;
+    transform: rotate(0deg);
+  }
+  50% {
+    right: 50px;
+    transform: rotate(360deg);
+  }
+  100% {
+    right: 25px;
+    transform: rotate(0deg);
+  }
+}

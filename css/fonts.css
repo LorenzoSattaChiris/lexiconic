@@ -1,0 +1,22 @@
+/* fonts.css - Import Fonts */
+
+/* Nunito */
+@font-face {
+    font-family: 'Nunito';
+    src: url('/Nunito/Nunito-VariableFont_wght.ttf') format('truetype'),
+         url('/Nunito/Nunito-Italic-VariableFont_wght.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Merriweather */
+@font-face {
+    font-family: 'Merriweather';
+    src: url('/Merriweather/Merriweather-Regular.ttf') format('truetype'),
+         url('/Merriweather/Merriweather-Bold.ttf') format('truetype'),
+         url('/Merriweather/Merriweather-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Other Font Families Could be Added Here */

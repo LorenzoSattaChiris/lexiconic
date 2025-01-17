@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /admin/      # Example path if there are admin routes
+Disallow: /api/        # Example path for API endpoints
+
+# Allow main pages
+Allow: /
+
+# Sitemap location
+Sitemap: https://lexiconic.tech/sitemap.xml
