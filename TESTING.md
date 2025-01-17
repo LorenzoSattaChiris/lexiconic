@@ -88,7 +88,7 @@ This document provides an overview of the testing strategy, tools, and results f
 
 ---
 
-## **7. Low Wifi Testing **
+## **7. Low Wifi Testing**
 
 - **Framework**: Browser 
 - **Setup**:
