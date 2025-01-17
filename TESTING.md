@@ -17,7 +17,7 @@ This document provides an overview of the testing strategy, tools, and results f
     - Speed Index is: 0.7 s
     - Need to Improve my JS minification and caching
     - Improve Contrast Ratio
-  - Full Report [here](/Lighthouse/Lighthouse_Desktop.html).
+  - (I Unfortunately had to Remove the Full HTML Report as it was making GitHub Crash)
 
 ---
 
